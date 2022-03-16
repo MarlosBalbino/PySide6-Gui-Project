@@ -60,8 +60,8 @@ class UI_MainWindow(object):
         # TOP FRAME MENU
         self.left_menu_top_frame = QFrame()
         self.left_menu_top_frame.setMinimumHeight(40)
-        self.left_menu_top_frame.setObjectName("left_menu_top_frame")
-        self.left_menu_top_frame.setStyleSheet("#left_menu_top_frame { background-color: red; }")
+        # self.left_menu_top_frame.setObjectName("left_menu_top_frame")
+        # self.left_menu_top_frame.setStyleSheet("#left_menu_top_frame { background-color: red; }")
         
         # TOP FRAME MENU LAYOUT
         self.left_menu_top_layout = QVBoxLayout(self.left_menu_top_frame)
