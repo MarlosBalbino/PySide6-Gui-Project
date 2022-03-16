@@ -20,13 +20,10 @@ class MainWindow(QMainWindow):
         self.ui = UI_MainWindow()
         self.ui.setup_ui(self)
 
-        # Toggle button
-        thread = threading.Thread(target=self.hidden_menu)
-
-        #self.ui.toggle_btn.clicked.connect(self.hidden_frame)        
+        # Toggle button 
+        #self.ui.toggle_btn.clicked.connect(self.toggle_button)          
         self.ui.toggle_btn.clicked.connect(self.hidden_menu)        
         self.ui.hidden_btn.clicked.connect(self.hidden_menu)
-        #self.ui.hidden_btn.clicked.connect(self.hidden_frame)
         
         # EXIBE A APLICAÇÂO
         self.show()
@@ -51,18 +48,18 @@ class MainWindow(QMainWindow):
     def hidden_menu(self):
         # Get hidden menu width
         menu_width = self.ui.hidden_menu.width()
-        self.hidden_menu_thread = QThread()
+        
+        self.animation = QPropertyAnimation(self.ui.hidden_menu, b"minimumWidth")   
+
         # Check width
         if menu_width != 250:
-            
-            self.animation = QPropertyAnimation(self.ui.hidden_menu, b"minimumWidth")        
+            self.ui.hidden_frame.show()
             self.animation.setStartValue(menu_width)
             self.animation.setEndValue(250)
             self.animation.setDuration(150)
             self.animation.start()
         
         else:
-            self.animation = QPropertyAnimation(self.ui.hidden_menu, b"minimumWidth")  
             self.animation.setStartValue(menu_width)
             self.animation.setEndValue(0)
             self.animation.setDuration(150)

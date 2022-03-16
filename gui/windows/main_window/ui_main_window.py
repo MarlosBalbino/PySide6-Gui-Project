@@ -30,7 +30,6 @@ class UI_MainWindow(object):
         parent.resize(1200, 720)
         parent.setMinimumSize(480, 360)
 
-       
         # CREATE MAIN FRAME
         self.main_frame = QFrame()
 
@@ -39,7 +38,7 @@ class UI_MainWindow(object):
         self.main_layout.setContentsMargins(0,0,0,0)
         self.main_layout.setSpacing(0)
 
-         # CREATE CENTRAL WIDGET
+        # CREATE CENTRAL WIDGET
         self.central_frame = QFrame()
         # self.central_frame.setStyleSheet("background-color: #282a36")
 
@@ -151,9 +150,7 @@ class UI_MainWindow(object):
         self.ui_pages.setupUi(self.pages)
         self.pages.setCurrentWidget(self.ui_pages.page_1)
 
-
-
-        # ///////////////////////////////////////////////////////////////////
+        # =========================================================================
         # PUSH BUTTON
         # self.button = QPushButton("Clique aki, carai!!!")
         # self.text = QLabel("Hello World",
@@ -163,9 +160,7 @@ class UI_MainWindow(object):
         # self.left_bar_layout.addWidget(self.button)
         # self.left_bar_layout.addWidget(self.text)
         # self.button.clicked.connect(self.magic)
-        # ///////////////////////////////////////////////////////////////////
-
-        
+        # =========================================================================
 
         # BOTTOM BAR
         self.bottom_bar = QFrame()
@@ -193,10 +188,12 @@ class UI_MainWindow(object):
         # ADD WIDGETS TO CONTENT LAYOUT
         self.content_layout.addWidget(self.top_bar)
         self.content_layout.addWidget(self.pages)
-   
-        self.main_layout.addWidget(self.left_menu)        
-        self.main_layout.addWidget(self.content) 
 
+        # ADD WIDGETS TO MAIN LAYOUT
+        self.main_layout.addWidget(self.left_menu)        
+        self.main_layout.addWidget(self.content)
+
+        # =========================================================================
         # HIDDEN FRAME
         self.hidden_frame = QFrame(parent=self.main_frame)
         self.hidden_frame.setStyleSheet("background-color: transparent")
@@ -204,9 +201,6 @@ class UI_MainWindow(object):
         self.hidden_frame.setMinimumWidth(3840)
         self.hidden_frame.setMinimumHeight(2160)
         self.hidden_frame.hide()
-        self.hidden_frame_thread = QThread()
-        self.hidden_frame.moveToThread(self.hidden_frame_thread)
-        self.hidden_frame_thread.start()
 
         # HIDDEN FRAME LAYOUT
         self.hidden_layout = QHBoxLayout(self.hidden_frame)
@@ -222,8 +216,6 @@ class UI_MainWindow(object):
 
         self.hidden_btn_frame = QFrame()
         self.hidden_btn_frame.setStyleSheet("background-color: transparent")
-        #self.hidden_btn_frame.setMaximumWidth(15)
-        #self.hidden_btn_frame.setMinimumWidth(15)
         self.hidden_btn_frame.setMaximumHeight(2160)
 
         # HIDDEN BTN
@@ -233,7 +225,8 @@ class UI_MainWindow(object):
         
         # ADD HIDDEN BTN TO HIDDEN FRAME
         self.hidden_layout.addWidget(self.hidden_menu)
-        self.hidden_layout.addWidget(self.hidden_btn_frame)        
+        self.hidden_layout.addWidget(self.hidden_btn_frame)
+        # =========================================================================       
         
         # ADD WIDGETS TO CENTRAL FRAME
         self.extern_layout.addWidget(self.main_frame)
