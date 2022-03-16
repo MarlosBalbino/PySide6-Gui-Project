@@ -21,28 +21,28 @@ class MainWindow(QMainWindow):
         self.ui.setup_ui(self)
 
         # Toggle button 
-        #self.ui.toggle_btn.clicked.connect(self.toggle_button)          
-        self.ui.toggle_btn.clicked.connect(self.hidden_menu)        
-        self.ui.hidden_btn.clicked.connect(self.hidden_menu)
+        self.ui.toggle_btn.clicked.connect(self.toggle_button)          
+        # self.ui.toggle_btn.clicked.connect(self.hidden_menu)        
+        # self.ui.hidden_btn.clicked.connect(self.hidden_menu)
         
         # EXIBE A APLICAÇÂO
         self.show()
 
-    # def toggle_button(self):
-    #     # Get left menu width
-    #     menu_width = self.ui.left_menu.width()
+    def toggle_button(self):
+        # Get left menu width
+        menu_width = self.ui.left_menu.width()
 
-    #     # Check width
-    #     width = 50
-    #     if menu_width == 50:
-    #         width = 240
+        # Check width
+        width = 50
+        if menu_width == 50:
+            width = 240
 
-    #     # Start animation
-    #     self.animation = QPropertyAnimation(self.ui.left_menu, b"minimumWidth")
-    #     self.animation.setStartValue(menu_width)
-    #     self.animation.setEndValue(width)
-    #     self.animation.setDuration(150)
-    #     self.animation.start()
+        # Start animation
+        self.animation = QPropertyAnimation(self.ui.left_menu, b"minimumWidth")
+        self.animation.setStartValue(menu_width)
+        self.animation.setEndValue(width)
+        self.animation.setDuration(150)
+        self.animation.start()
 
     @Slot()
     def hidden_menu(self):

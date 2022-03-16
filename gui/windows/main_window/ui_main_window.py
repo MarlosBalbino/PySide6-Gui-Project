@@ -59,7 +59,7 @@ class UI_MainWindow(object):
 
         # TOP FRAME MENU
         self.left_menu_top_frame = QFrame()
-        self.left_menu_top_frame.setMinimumHeight(50)
+        self.left_menu_top_frame.setMinimumHeight(40)
         self.left_menu_top_frame.setObjectName("left_menu_top_frame")
         self.left_menu_top_frame.setStyleSheet("#left_menu_top_frame { background-color: red; }")
         
@@ -69,23 +69,38 @@ class UI_MainWindow(object):
         self.left_menu_top_layout.setSpacing(0)
 
         # PUSH BTNS
-        self.toggle_btn = QPushButton("Toggle")
-        self.btn_1 = QPushButton("btn_1")
-        self.btn_2 = QPushButton("btn_2")
+        self.toggle_btn = PyPushButton(
+            text = "menu",
+            icon_path = "menu_icon.svg"
+        )
+        self.btn_1 = PyPushButton(
+            text = "Devices",
+            is_active = True,
+            icon_path = "home_icon.svg"
+        )
+        self.btn_2 = PyPushButton(
+            text = "Charts",
+            icon_path = "widgets_icon.svg"
+        )
+        self.btn_3 = PyPushButton(
+            text = "ASCADA",
+            icon_path = "widgets_icon.svg"
+        )
 
         # ADD PUSH BTNS TO LAOUT
         self.left_menu_top_layout.addWidget(self.toggle_btn)
         self.left_menu_top_layout.addWidget(self.btn_1)
         self.left_menu_top_layout.addWidget(self.btn_2)
+        self.left_menu_top_layout.addWidget(self.btn_3)
 
         # MENU SPACER
         self.left_menu_spacer = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         # BOTTOM FRAME MENU
         self.left_menu_bottom_frame = QFrame()
-        self.left_menu_bottom_frame.setMinimumHeight(50)
-        self.left_menu_bottom_frame.setObjectName("left_menu_bottom_frame")
-        self.left_menu_bottom_frame.setStyleSheet("#left_menu_bottom_frame { background-color: red }")
+        self.left_menu_bottom_frame.setMinimumHeight(40)
+        # self.left_menu_bottom_frame.setObjectName("left_menu_bottom_frame")
+        # self.left_menu_bottom_frame.setStyleSheet("#left_menu_bottom_frame { background-color: red }")
         
         # BOTTOM FRAME MENU LAYOUT
         self.left_menu_bottom_layout = QVBoxLayout(self.left_menu_bottom_frame)
@@ -93,7 +108,10 @@ class UI_MainWindow(object):
         self.left_menu_bottom_layout.setSpacing(0)
 
         # PUSH SETTINGS BTN
-        self.settings_btn = QPushButton("settings")
+        self.settings_btn = PyPushButton(
+            text = "Settings",
+            icon_path = "settings_icon.svg",
+        )
 
         # ADD PUSH BTN CONFIG TO LAYOUT
         self.left_menu_bottom_layout.addWidget(self.settings_btn)
