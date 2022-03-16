@@ -1,5 +1,7 @@
 import sys
 import os
+import time
+import threading
 from turtle import width
 from qt_core import *
 
@@ -19,64 +21,53 @@ class MainWindow(QMainWindow):
         self.ui.setup_ui(self)
 
         # Toggle button
-        self.ui.toggle_btn.clicked.connect(self.hidden_menu)               
-        self.ui.hidden_btn.clicked.connect(self.hidden_menu)        
-        self.ui.btn_1.clicked.connect(self.toggle_button)
+        thread = threading.Thread(target=self.hidden_menu)
+
+        #self.ui.toggle_btn.clicked.connect(self.hidden_frame)        
+        self.ui.toggle_btn.clicked.connect(self.hidden_menu)        
+        self.ui.hidden_btn.clicked.connect(self.hidden_menu)
+        #self.ui.hidden_btn.clicked.connect(self.hidden_frame)
         
         # EXIBE A APLICAÇÂO
         self.show()
 
-    def toggle_button(self):
-        # Get left menu width
-        menu_width = self.ui.left_menu.width()
+    # def toggle_button(self):
+    #     # Get left menu width
+    #     menu_width = self.ui.left_menu.width()
 
-        # Check width
-        width = 50
-        if menu_width == 50:
-            width = 240
+    #     # Check width
+    #     width = 50
+    #     if menu_width == 50:
+    #         width = 240
 
-        # Start animation
-        self.animation = QPropertyAnimation(self.ui.left_menu, b"minimumWidth")
-        self.animation.setStartValue(menu_width)
-        self.animation.setEndValue(width)
-        self.animation.setDuration(150)
-        self.animation.start()
+    #     # Start animation
+    #     self.animation = QPropertyAnimation(self.ui.left_menu, b"minimumWidth")
+    #     self.animation.setStartValue(menu_width)
+    #     self.animation.setEndValue(width)
+    #     self.animation.setDuration(150)
+    #     self.animation.start()
 
+    @Slot()
     def hidden_menu(self):
         # Get hidden menu width
         menu_width = self.ui.hidden_menu.width()
-
+        self.hidden_menu_thread = QThread()
         # Check width
-        width = 0
-        if menu_width == 0:
-            width = 250
-            self.ui.hidden_menu.setFixedWidth(250)
+        if menu_width != 250:
+            
+            self.animation = QPropertyAnimation(self.ui.hidden_menu, b"minimumWidth")        
+            self.animation.setStartValue(menu_width)
+            self.animation.setEndValue(250)
+            self.animation.setDuration(150)
+            self.animation.start()
+        
         else:
-            self.ui.hidden_menu.setFixedWidth(0)
-         
-        # Start animation
-        # self.animation = QPropertyAnimation(self.ui.hidden_menu, b"minimumWidth")  
-        # self.animation.setStartValue(menu_width)
-        # self.animation.setEndValue(width)
-        # self.animation.setDuration(500)
-        # self.animation.setEasingCurve(QEasingCurve.InOutCubic)
-        # self.animation.start()
-
-        print(self.ui.hidden_menu.width())
-
-        self.hidden_frame()
-
-    def hidden_frame(self):
-        # Get hidden menu width
-        menu_width = self.ui.hidden_frame.width()
-
-        # Check width
-        width = 0
-        if menu_width == 0:
-            width = 3840
-            self.ui.hidden_frame.setFixedWidth(3840)
-        else:
-            self.ui.hidden_frame.setFixedWidth(0)    
+            self.animation = QPropertyAnimation(self.ui.hidden_menu, b"minimumWidth")  
+            self.animation.setStartValue(menu_width)
+            self.animation.setEndValue(0)
+            self.animation.setDuration(150)
+            self.animation.finished.connect(self.ui.hidden_frame.hide)
+            self.animation.start()
 
 
 if __name__ == "__main__":
