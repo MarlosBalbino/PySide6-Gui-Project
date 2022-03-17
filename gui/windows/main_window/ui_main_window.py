@@ -86,12 +86,17 @@ class UI_MainWindow(object):
             text = "ASCADA",
             icon_path = "widgets_icon.svg"
         )
+        self.btn_4 = PyPushButton(
+            text = "Open new file",
+            icon_path = "folder_icon",
+        )
 
         # ADD PUSH BTNS TO LAOUT
         self.left_menu_top_layout.addWidget(self.toggle_btn)
         self.left_menu_top_layout.addWidget(self.btn_1)
         self.left_menu_top_layout.addWidget(self.btn_2)
         self.left_menu_top_layout.addWidget(self.btn_3)
+        self.left_menu_top_layout.addWidget(self.btn_4)
 
         # MENU SPACER
         self.left_menu_spacer = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)

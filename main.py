@@ -22,6 +22,7 @@ class MainWindow(QMainWindow):
 
         # Toggle button 
         self.ui.toggle_btn.clicked.connect(self.toggle_button)
+        self.ui.btn_4.clicked.connect(self.open_file)
         # self.ui.hidden_btn.clicked.connect(self.hidden_menu)
         
         # EXIBE A APLICAÇÂO
