@@ -21,8 +21,7 @@ class MainWindow(QMainWindow):
         self.ui.setup_ui(self)
 
         # Toggle button 
-        self.ui.toggle_btn.clicked.connect(self.toggle_button)          
-        # self.ui.toggle_btn.clicked.connect(self.hidden_menu)        
+        self.ui.toggle_btn.clicked.connect(self.toggle_button)
         # self.ui.hidden_btn.clicked.connect(self.hidden_menu)
         
         # EXIBE A APLICAÇÂO
@@ -65,6 +64,10 @@ class MainWindow(QMainWindow):
             self.animation.setDuration(150)
             self.animation.finished.connect(self.ui.hidden_frame.hide)
             self.animation.start()
+
+    def open_file(self):
+        file_name = QFileDialog.getOpenFileName(self, "Open_file")
+        print(file_name)
 
 
 if __name__ == "__main__":
