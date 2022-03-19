@@ -15,7 +15,11 @@ class PyPushButton(QPushButton):
         button_color = "#44475a",
         button_hover = "#4f5368",
         button_pressed = "#282a36",
-        is_active = False,
+        actived_color = "#4f5368",
+        border_color = "#282a36",
+        border_position = "right",        
+        border_size = 5,
+        is_active = False,        
         parent = None
     ):
         super().__init__(parent=parent)
@@ -35,7 +39,11 @@ class PyPushButton(QPushButton):
         self.button_color = button_color
         self.button_hover = button_hover
         self.button_pressed = button_pressed
+        self.actived_color = actived_color
         self.is_active = is_active
+        self.border_position = border_position
+        self.border_size = border_size
+        self.border_color = border_color
 
         # Set style
         self.set_style(
@@ -44,6 +52,10 @@ class PyPushButton(QPushButton):
             button_color = self.button_color,
             button_hover = self.button_hover,
             button_pressed = self.button_pressed,
+            actived_color = self.actived_color,
+            border_color = self.border_color,
+            border_position = self.border_position,
+            border_size = self.border_size,
             is_active = self.is_active
         )
 
@@ -54,6 +66,10 @@ class PyPushButton(QPushButton):
         button_color = "#44475a",
         button_hover = "#4f5368",
         button_pressed = "#282a36",
+        actived_color = "#4f5368",
+        border_color = "#282a36",
+        border_position = "right",
+        border_size = 5,
         is_active = False
     ):
         style = f"""
@@ -74,8 +90,8 @@ class PyPushButton(QPushButton):
 
         active_style = f"""
         QPushButton {{
-            background-color: {button_hover};
-            border-right: 5px solid #282a36;
+            background-color: {actived_color};
+            border-{border_position}: {border_size}px solid {border_color};
         }}
         """
         if not is_active:

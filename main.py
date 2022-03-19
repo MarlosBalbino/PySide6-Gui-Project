@@ -23,8 +23,14 @@ class MainWindow(QMainWindow):
         self.ui.toggle_btn.clicked.connect(self.toggle_button)
         self.ui.btn_4.clicked.connect(self.open_file)
         self.ui.settings_btn.clicked.connect(self.hidden_menu)
-        self.ui.hidden_btn.clicked.connect(self.hidden_menu)
-        self.ui.get_text_btn.clicked.connect(self.get_text)
+
+        # LEFT HIDDEN MENU
+        self.mw = MyWidgets()
+        self.mw.leftHiddenMenu(self.ui.main_frame)
+
+        # Get text button
+        self.mw.get_text_btn.clicked.connect(self.get_text)
+        self.mw.hidden_btn.clicked.connect(self.hidden_menu)
         
         # EXIBE A APLICAÇÂO
         self.show()
@@ -48,13 +54,13 @@ class MainWindow(QMainWindow):
     @Slot()
     def hidden_menu(self):
         # Get hidden menu width
-        menu_width = self.ui.hidden_menu.width()
+        menu_width = self.mw.hidden_menu.width()
         
-        self.animation = QPropertyAnimation(self.ui.hidden_menu, b"minimumWidth")   
+        self.animation = QPropertyAnimation(self.mw.hidden_menu, b"minimumWidth")   
 
         # Check width
         if menu_width != 240:
-            self.ui.hidden_frame.show()
+            self.mw.hidden_frame.show()
             self.animation.setStartValue(menu_width)
             self.animation.setEndValue(240)
             self.animation.setDuration(150)
@@ -64,7 +70,7 @@ class MainWindow(QMainWindow):
             self.animation.setStartValue(menu_width)
             self.animation.setEndValue(0)
             self.animation.setDuration(150)
-            self.animation.finished.connect(self.ui.hidden_frame.hide)
+            self.animation.finished.connect(self.mw.hidden_frame.hide)
             self.animation.start()
 
     def open_file(self):
@@ -72,7 +78,7 @@ class MainWindow(QMainWindow):
         print(file_name)
 
     def get_text(self):
-        text = self.ui.text_edit.toPlainText()
+        text = self.mw.text_edit.toPlainText()
         print(text)
 
 

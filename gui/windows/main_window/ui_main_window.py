@@ -1,4 +1,5 @@
 from ctypes import alignment
+from gui.widgets.my_widgets import MyWidgets
 from qt_core import *
 
 # IMPORT PAGES
@@ -7,19 +8,11 @@ from gui.pages.ui_pages import Ui_application_pages
 # IMPORT CUSTOM WIDGETS
 from gui.widgets.py_push_button import PyPushButton
 
-import random
-
 #IMPORT PAGES
 from gui.pages.ui_pages import Ui_application_pages 
 
 # MAIN WINDOW
 class UI_MainWindow(object):
-
-    
-    # @Slot()
-    # def magic(self):
-    #     self.text.setText(random.choice(['sla', 'test', 'mano']))
-    #     print('TESTE')
 
     def setup_ui(self, parent):
         
@@ -71,24 +64,28 @@ class UI_MainWindow(object):
         # PUSH BTNS
         self.toggle_btn = PyPushButton(
             text = "Menu",
-            icon_path = "menu_icon.svg"
+            icon_path = "icon_menu.svg"
         )
         self.btn_1 = PyPushButton(
             text = "Devices",
             is_active = True,
-            icon_path = "home_icon.svg"
+            icon_path = "icon_home.svg",
+            border_size = 3,
+            border_position = "left",
+            border_color = "#c3ccdf",
+            actived_color = "#282a36"
         )
         self.btn_2 = PyPushButton(
             text = "Charts",
-            icon_path = "widgets_icon.svg"
+            icon_path = "icon_widgets.svg"
         )
         self.btn_3 = PyPushButton(
             text = "ASCADA",
-            icon_path = "widgets_icon.svg"
+            icon_path = "icon_widgets.svg"
         )
         self.btn_4 = PyPushButton(
             text = "Open new file",
-            icon_path = "folder_icon",
+            icon_path = "cil-folder.png"
         )
 
         # ADD PUSH BTNS TO LAOUT
@@ -115,7 +112,7 @@ class UI_MainWindow(object):
         # PUSH SETTINGS BTN
         self.settings_btn = PyPushButton(
             text = "Settings",
-            icon_path = "settings_icon.svg",
+            icon_path = "icon_settings.svg",
         )
 
         # ADD PUSH BTN CONFIG TO LAYOUT
@@ -173,18 +170,6 @@ class UI_MainWindow(object):
         self.ui_pages.setupUi(self.pages)
         self.pages.setCurrentWidget(self.ui_pages.page_1)
 
-        # =========================================================================
-        # PUSH BUTTON
-        # self.button = QPushButton("Clique aki, carai!!!")
-        # self.text = QLabel("Hello World",
-        #                     alignment=Qt.AlignCenter)
-        # self.text.setStyleSheet("font-size: 12pt; color: #f8f8f2")
-        # self.left_bar_layout = QVBoxLayout(self.left_menu)
-        # self.left_bar_layout.addWidget(self.button)
-        # self.left_bar_layout.addWidget(self.text)
-        # self.button.clicked.connect(self.magic)
-        # =========================================================================
-
         # BOTTOM BAR
         self.bottom_bar = QFrame()
         self.bottom_bar.setMaximumHeight(15)
@@ -215,60 +200,6 @@ class UI_MainWindow(object):
         # ADD WIDGETS TO MAIN LAYOUT
         self.main_layout.addWidget(self.left_menu)        
         self.main_layout.addWidget(self.content)
-
-        # =========================================================================
-        # HIDDEN FRAME
-        self.hidden_frame = QFrame(parent=self.main_frame)
-        self.hidden_frame.setStyleSheet("background-color: transparent")
-        self.hidden_frame.setMaximumWidth(3840)
-        self.hidden_frame.setMinimumWidth(3840)
-        self.hidden_frame.setMinimumHeight(2160)
-        self.hidden_frame.hide()
-
-        # HIDDEN FRAME LAYOUT
-        self.hidden_layout = QHBoxLayout(self.hidden_frame)
-        self.hidden_layout.setContentsMargins(0,0,0,0)
-        self.hidden_layout.setSpacing(0)
-
-        # HIDDEN MENU
-        self.hidden_menu = QFrame()
-        self.hidden_menu.setStyleSheet("background-color: #44475a")
-        self.hidden_menu.setMaximumWidth(0)
-        self.hidden_menu.setMinimumWidth(0)
-        self.hidden_menu.setMaximumHeight(2160)
-
-        # TEXT BOX
-        self.text_edit = QTextEdit(self.hidden_menu)
-        self.text_edit.setStyleSheet("color: white; font-size: 12pt")
-        self.text_edit.setAcceptRichText(False)
-        self.text_edit.move(10,10)
-        self.text_edit.setMaximumWidth(220)
-        self.text_edit.setMinimumHeight(360)
-        self.text_edit.setMaximumHeight(720)
-
-        # GET TEXT BTN
-        self.get_text_btn = PyPushButton(
-            text = "Get Text", 
-            parent = self.hidden_menu, 
-            icon_path = "widgets_icon.svg"
-        )        
-        self.get_text_btn.move(180, 380)
-        self.get_text_btn.setFixedSize(50, 50)
-
-        # HIDDEN BTN FRAME
-        self.hidden_btn_frame = QFrame()
-        self.hidden_btn_frame.setStyleSheet("background-color: transparent")
-        self.hidden_btn_frame.setMaximumHeight(2160)
-
-        # HIDDEN BTN
-        self.hidden_btn = QPushButton(self.hidden_btn_frame)
-        self.hidden_btn.setStyleSheet("background-color: transparent")
-        self.hidden_btn.setFixedSize(3840, 3840)
-        
-        # ADD HIDDEN BTN TO HIDDEN FRAME
-        self.hidden_layout.addWidget(self.hidden_menu)
-        self.hidden_layout.addWidget(self.hidden_btn_frame)
-        # =========================================================================       
         
         # ADD WIDGETS TO CENTRAL FRAME
         self.extern_layout.addWidget(self.main_frame)
