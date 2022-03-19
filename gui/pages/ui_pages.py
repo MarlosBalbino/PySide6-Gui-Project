@@ -12,6 +12,7 @@
 from PySide6.QtGui import *  # type: ignore
 from PySide6.QtWidgets import *  # type: ignore """
 
+from ctypes import alignment
 from qt_core import *
 
 
@@ -29,7 +30,7 @@ class Ui_application_pages(object):
         self.label_3.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout.addWidget(self.label_3)
-
+        
         application_pages.addWidget(self.page_1)
         self.page_2 = QWidget()
         self.page_2.setObjectName(u"page_2")

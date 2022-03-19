@@ -15,10 +15,10 @@ class PyPushButton(QPushButton):
         button_color = "#44475a",
         button_hover = "#4f5368",
         button_pressed = "#282a36",
-        actived_color = "#4f5368",
-        border_color = "#282a36",
-        border_position = "right",        
-        border_size = 5,
+        actived_color = "#282a36", # defaul: #4f5368
+        border_color = "#c3ccdf", # defaul: #282a36
+        border_position = "left", # defaul: "right"       
+        border_size = 3, # defaul: 5
         is_active = False,        
         parent = None
     ):
@@ -57,6 +57,20 @@ class PyPushButton(QPushButton):
             border_position = self.border_position,
             border_size = self.border_size,
             is_active = self.is_active
+        )
+
+    def set_active(self, set_active):
+        self.set_style(
+            text_padding = self.text_padding,
+            text_color = self.text_color,
+            button_color = self.button_color,
+            button_hover = self.button_hover,
+            button_pressed = self.button_pressed,
+            actived_color = self.actived_color,
+            border_color = self.border_color,
+            border_position = self.border_position,
+            border_size = self.border_size,
+            is_active = set_active
         )
 
     def set_style(
@@ -98,7 +112,7 @@ class PyPushButton(QPushButton):
             self.setStyleSheet(style)
         else:
             self.setStyleSheet(style + active_style)
-
+        
     def paintEvent(self, event):
         QPushButton.paintEvent(self, event)
 

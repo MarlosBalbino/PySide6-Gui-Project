@@ -70,10 +70,6 @@ class UI_MainWindow(object):
             text = "Devices",
             is_active = True,
             icon_path = "icon_home.svg",
-            border_size = 3,
-            border_position = "left",
-            border_color = "#c3ccdf",
-            actived_color = "#282a36"
         )
         self.btn_2 = PyPushButton(
             text = "Charts",
@@ -112,7 +108,7 @@ class UI_MainWindow(object):
         # PUSH SETTINGS BTN
         self.settings_btn = PyPushButton(
             text = "Settings",
-            icon_path = "icon_settings.svg",
+            icon_path = "icon_settings.svg"
         )
 
         # ADD PUSH BTN CONFIG TO LAYOUT
