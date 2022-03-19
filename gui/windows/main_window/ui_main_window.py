@@ -70,7 +70,7 @@ class UI_MainWindow(object):
 
         # PUSH BTNS
         self.toggle_btn = PyPushButton(
-            text = "menu",
+            text = "Menu",
             icon_path = "menu_icon.svg"
         )
         self.btn_1 = PyPushButton(
@@ -237,6 +237,25 @@ class UI_MainWindow(object):
         self.hidden_menu.setMinimumWidth(0)
         self.hidden_menu.setMaximumHeight(2160)
 
+        # TEXT BOX
+        self.text_edit = QTextEdit(self.hidden_menu)
+        self.text_edit.setStyleSheet("color: white; font-size: 12pt")
+        self.text_edit.setAcceptRichText(False)
+        self.text_edit.move(10,10)
+        self.text_edit.setMaximumWidth(220)
+        self.text_edit.setMinimumHeight(360)
+        self.text_edit.setMaximumHeight(720)
+
+        # GET TEXT BTN
+        self.get_text_btn = PyPushButton(
+            text = "Get Text", 
+            parent = self.hidden_menu, 
+            icon_path = "widgets_icon.svg"
+        )        
+        self.get_text_btn.move(180, 380)
+        self.get_text_btn.setFixedSize(50, 50)
+
+        # HIDDEN BTN FRAME
         self.hidden_btn_frame = QFrame()
         self.hidden_btn_frame.setStyleSheet("background-color: transparent")
         self.hidden_btn_frame.setMaximumHeight(2160)

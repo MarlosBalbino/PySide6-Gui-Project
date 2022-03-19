@@ -15,10 +15,11 @@ class PyPushButton(QPushButton):
         button_color = "#44475a",
         button_hover = "#4f5368",
         button_pressed = "#282a36",
-        is_active = False
+        is_active = False,
+        parent = None
     ):
-        super().__init__()
-
+        super().__init__(parent=parent)
+        
         # Set default paremeters
         self.setText(text)
         self.setMaximumHeight(height)

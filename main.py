@@ -22,7 +22,9 @@ class MainWindow(QMainWindow):
         # Toggle button 
         self.ui.toggle_btn.clicked.connect(self.toggle_button)
         self.ui.btn_4.clicked.connect(self.open_file)
-        # self.ui.hidden_btn.clicked.connect(self.hidden_menu)
+        self.ui.settings_btn.clicked.connect(self.hidden_menu)
+        self.ui.hidden_btn.clicked.connect(self.hidden_menu)
+        self.ui.get_text_btn.clicked.connect(self.get_text)
         
         # EXIBE A APLICAÇÂO
         self.show()
@@ -51,10 +53,10 @@ class MainWindow(QMainWindow):
         self.animation = QPropertyAnimation(self.ui.hidden_menu, b"minimumWidth")   
 
         # Check width
-        if menu_width != 250:
+        if menu_width != 240:
             self.ui.hidden_frame.show()
             self.animation.setStartValue(menu_width)
-            self.animation.setEndValue(250)
+            self.animation.setEndValue(240)
             self.animation.setDuration(150)
             self.animation.start()
         
@@ -68,6 +70,10 @@ class MainWindow(QMainWindow):
     def open_file(self):
         file_name = QFileDialog.getOpenFileName(self, "Open_file")
         print(file_name)
+
+    def get_text(self):
+        text = self.ui.text_edit.toPlainText()
+        print(text)
 
 
 if __name__ == "__main__":
