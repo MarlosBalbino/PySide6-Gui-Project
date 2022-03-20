@@ -41,7 +41,7 @@ class MyWidgets(object):
         self.get_text_btn = PyPushButton(
             text = "Get Text", 
             parent = self.hidden_menu, 
-            icon_path = "widgets_icon.svg"
+            icon_path = "icon_widgets.svg"
         )        
         self.get_text_btn.move(180, 380)
         self.get_text_btn.setFixedSize(50, 50)
