@@ -7,12 +7,10 @@ from copy import deepcopy
 
 from numpy import spacing
 from qt_core import *
-from gui.widgets.my_widgets import MyFrame
-
 
 class Ui_application_pages(object):
 
-    object_list = []
+    picture_list = []
 
     def setupUi(self, application_pages):
         if not application_pages.objectName():
@@ -47,9 +45,6 @@ class Ui_application_pages(object):
         self.contents_frame.setMinimumWidth(500)
         
         self.spacer = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        size_policy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-
 
         self.contents_frame.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
       
@@ -96,12 +91,14 @@ class Ui_application_pages(object):
         application_pages.addWidget(self.page_3)
 
     def add_picture(self):
-        self.picture = QFrame()
-        self.picture.setMaximumSize(QSize(50, 50))
-        self.picture.setMinimumSize(QSize(50, 50))
-        self.picture.setStyleSheet("background-color: grey")
+        picture = QFrame()
+        picture.setMaximumSize(QSize(50, 50))
+        picture.setMinimumSize(QSize(50, 50))
+        picture.setStyleSheet("background-color: grey")
         
-        self.contents_frame_layout.addWidget(self.picture, alignment=Qt.AlignRight)
+        self.picture_list.append(picture)
+
+        self.contents_frame_layout.addWidget(picture, alignment=Qt.AlignRight)
         
     def add_spacer(self):
         self.contents_frame_layout.addSpacerItem(self.spacer)
@@ -110,4 +107,5 @@ class Ui_application_pages(object):
         self.contents_frame_layout.removeItem(self.spacer)
 
     def remove_picture(self):
-        self.picture.deleteLater()
+        self.picture_list[-1].deleteLater()
+        self.picture_list.pop()

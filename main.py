@@ -31,15 +31,6 @@ class MainWindow(QMainWindow):
         self.ui.btn_4.clicked.connect(self.open_file)
 
         # Show settings
-        self.ui.settings_btn.clicked.connect(self.hidden_menu)
-
-        # LEFT HIDDEN MENU
-        self.mw = MyWidgets()
-        self.mw.leftHiddenMenu(self.ui.main_frame)
-
-        # Get text button
-        self.mw.get_text_btn.clicked.connect(self.get_text)
-        self.mw.hidden_btn.clicked.connect(self.hidden_menu)
         
         # EXIBE A APLICAÇÂO
         self.show()
@@ -71,9 +62,9 @@ class MainWindow(QMainWindow):
         menu_width = self.ui.left_menu.width()
 
         # Check width
-        width = 50
-        if menu_width == 50:
-            width = 240
+        width = 0
+        if menu_width == 0:
+            width = 50
 
         # Start animation
         self.animation = QPropertyAnimation(self.ui.left_menu, b"minimumWidth")
@@ -81,28 +72,6 @@ class MainWindow(QMainWindow):
         self.animation.setEndValue(width)
         self.animation.setDuration(150)
         self.animation.start()
-
-    @Slot()
-    def hidden_menu(self):
-        # Get hidden menu width
-        menu_width = self.mw.hidden_menu.width()
-        
-        self.animation = QPropertyAnimation(self.mw.hidden_menu, b"minimumWidth")   
-
-        # Check width
-        if menu_width != 240:
-            self.mw.hidden_frame.show()
-            self.animation.setStartValue(menu_width)
-            self.animation.setEndValue(240)
-            self.animation.setDuration(150)
-            self.animation.start()
-        
-        else:
-            self.animation.setStartValue(menu_width)
-            self.animation.setEndValue(0)
-            self.animation.setDuration(150)
-            self.animation.finished.connect(self.mw.hidden_frame.hide)
-            self.animation.start()
 
     def open_file(self):
         file_name = QFileDialog.getOpenFileName(self, "Open_file")

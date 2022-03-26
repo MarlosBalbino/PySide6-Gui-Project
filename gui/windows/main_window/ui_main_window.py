@@ -42,8 +42,8 @@ class UI_MainWindow(object):
         # LEFT MENU
         self.left_menu = QFrame()
         self.left_menu.setStyleSheet("background-color: #44475a")
-        self.left_menu.setMinimumWidth(50)
-        self.left_menu.setMaximumWidth(50)
+        self.left_menu.setMinimumWidth(0)
+        self.left_menu.setMaximumWidth(0)
 
         # LEFT MENU LAYOUT
         self.left_menu_layout = QVBoxLayout(self.left_menu)
@@ -85,7 +85,7 @@ class UI_MainWindow(object):
         )
 
         # ADD PUSH BTNS TO LAOUT
-        self.left_menu_top_layout.addWidget(self.toggle_btn)
+        # self.left_menu_top_layout.addWidget(self.toggle_btn)
         self.left_menu_top_layout.addWidget(self.btn_1)
         self.left_menu_top_layout.addWidget(self.btn_2)
         self.left_menu_top_layout.addWidget(self.btn_3)
@@ -138,11 +138,20 @@ class UI_MainWindow(object):
 
         # TOP BAR
         self.top_bar = QFrame()
-        self.top_bar.setMaximumHeight(25)
-        self.top_bar.setMinimumHeight(25)
+        self.top_bar.setMaximumHeight(40)
+        self.top_bar.setMinimumHeight(40)
         self.top_bar.setStyleSheet("background-color: #21232d; color: #6272a4")
         self.top_bar_layout = QHBoxLayout(self.top_bar)
-        self.top_bar_layout.setContentsMargins(5,0,5,0)
+        self.top_bar_layout.setContentsMargins(0,0,5,0)
+
+        # left toggle btn frame
+        self.toggle_btn_frame = QFrame()
+        self.toggle_btn_frame.setMaximumSize(QSize(50, 40))
+        self.toggle_btn_frame.setMinimumSize(QSize(50, 40))
+
+        self.toggle_btn_layout = QHBoxLayout(self.toggle_btn_frame)
+        self.toggle_btn_layout.setContentsMargins(0,0,0,0)
+        self.toggle_btn_layout.addWidget(self.toggle_btn)
 
         # left label
         self.top_left_label = QLabel("Maciel Viado")
@@ -155,6 +164,7 @@ class UI_MainWindow(object):
         self.top_right_label.setStyleSheet("font: 700 9pt 'Segoe UI'")
 
         # add labels to top bar layout
+        self.top_bar_layout.addWidget(self.toggle_btn_frame)
         self.top_bar_layout.addWidget(self.top_left_label)
         self.top_bar_layout.addSpacerItem(self.spacer)
         self.top_bar_layout.addWidget(self.top_right_label)
@@ -190,7 +200,6 @@ class UI_MainWindow(object):
         self.bottom_bar_layout.addWidget(self.bottom_right_label)
 
         # ADD WIDGETS TO CONTENT LAYOUT
-        self.content_layout.addWidget(self.top_bar)
         self.content_layout.addWidget(self.pages)
 
         # ADD WIDGETS TO MAIN LAYOUT
@@ -198,6 +207,7 @@ class UI_MainWindow(object):
         self.main_layout.addWidget(self.content)
         
         # ADD WIDGETS TO CENTRAL FRAME
+        self.extern_layout.addWidget(self.top_bar)
         self.extern_layout.addWidget(self.main_frame)
         self.extern_layout.addWidget(self.bottom_bar)
 
