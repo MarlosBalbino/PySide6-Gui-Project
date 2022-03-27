@@ -3,13 +3,16 @@ from gui.widgets.my_widgets import MyWidgets
 from qt_core import *
 
 # IMPORT PAGES
-from gui.pages.ui_pages import Ui_application_pages
+from gui.pages.ui_page_1 import UI_application_page_1
+from gui.pages.ui_page_2 import UI_application_page_2
+from gui.pages.ui_page_3 import UI_application_page_3
+from gui.pages.ui_page_4 import UI_application_page_4
+from gui.pages.ui_settings import UI_application_settings
 
 # IMPORT CUSTOM WIDGETS
 from gui.widgets.py_push_button import PyPushButton
 
 #IMPORT PAGES
-from gui.pages.ui_pages import Ui_application_pages 
 
 # MAIN WINDOW
 class UI_MainWindow(object):
@@ -53,8 +56,6 @@ class UI_MainWindow(object):
         # TOP FRAME MENU
         self.left_menu_top_frame = QFrame()
         self.left_menu_top_frame.setMinimumHeight(40)
-        # self.left_menu_top_frame.setObjectName("left_menu_top_frame")
-        # self.left_menu_top_frame.setStyleSheet("#left_menu_top_frame { background-color: red; }")
         
         # TOP FRAME MENU LAYOUT
         self.left_menu_top_layout = QVBoxLayout(self.left_menu_top_frame)
@@ -67,20 +68,24 @@ class UI_MainWindow(object):
             icon_path = "icon_menu.svg"
         )
         self.btn_1 = PyPushButton(
-            text = "Devices",
+            text = "Home",
             is_active = True,
             icon_path = "icon_home.svg",
         )
         self.btn_2 = PyPushButton(
-            text = "Charts",
-            icon_path = "icon_widgets.svg"
+            text = "Devices",
+            icon_path = "cil-ci-2.png"
         )
         self.btn_3 = PyPushButton(
-            text = "ASCADA",
-            icon_path = "icon_widgets.svg"
+            text = "Charts",
+            icon_path = "cil-charts-2.png"
         )
         self.btn_4 = PyPushButton(
-            text = "Open new file",
+            text = "SCADA",
+            icon_path = "cil-scada-3.png"
+        )
+        self.btn_5 = PyPushButton(
+            text = "Open folder",
             icon_path = "cil-folder.png"
         )
 
@@ -90,6 +95,7 @@ class UI_MainWindow(object):
         self.left_menu_top_layout.addWidget(self.btn_2)
         self.left_menu_top_layout.addWidget(self.btn_3)
         self.left_menu_top_layout.addWidget(self.btn_4)
+        self.left_menu_top_layout.addWidget(self.btn_5)
 
         # MENU SPACER
         self.left_menu_spacer = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
@@ -172,15 +178,24 @@ class UI_MainWindow(object):
         # APPLICATION PAGES
         self.pages = QStackedWidget()
         self.pages.setStyleSheet("font-size: 12pt; color: #f8f8f2")
-        self.ui_pages = Ui_application_pages()
-        self.ui_pages.setupUi(self.pages)
-        self.pages.setCurrentWidget(self.ui_pages.page_1)
+        self.pages.setWindowTitle("application_pages")
+        self.pages.resize(622, 515)
+        self.ui_page_1 = UI_application_page_1()
+        self.ui_page_1.setupUi(self.pages)
+        self.ui_page_2 = UI_application_page_2()
+        self.ui_page_2.setupUi(self.pages)
+        self.ui_page_3 = UI_application_page_3()
+        self.ui_page_3.setupUi(self.pages)
+        self.ui_page_4 = UI_application_page_4()
+        self.ui_page_4.setupUi(self.pages)
+        self.ui_sttgs = UI_application_settings()
+        self.ui_sttgs.setupUi(self.pages)
+        self.pages.setCurrentWidget(self.ui_page_1.page)
 
         # BOTTOM BAR
         self.bottom_bar = QFrame()
         self.bottom_bar.setMaximumHeight(15)
         self.bottom_bar.setMinimumHeight(15)
-        # self.bottom_bar.setStyleSheet("background-color: #21232d; color: #6272a4")
         self.bottom_bar.setStyleSheet("background-color: #343644; color: #6272a4")
         self.bottom_bar_layout = QHBoxLayout(self.bottom_bar)
         self.bottom_bar_layout.setContentsMargins(5,0,5,0)

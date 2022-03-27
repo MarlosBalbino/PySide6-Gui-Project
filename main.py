@@ -26,11 +26,13 @@ class MainWindow(QMainWindow):
         self.ui.btn_1.clicked.connect(self.show_page_1)
         self.ui.btn_2.clicked.connect(self.show_page_2)
         self.ui.btn_3.clicked.connect(self.show_page_3)
+        self.ui.btn_4.clicked.connect(self.show_page_4)
 
         # Open file
-        self.ui.btn_4.clicked.connect(self.open_file)
+        self.ui.btn_5.clicked.connect(self.open_file)
 
         # Show settings
+        self.ui.settings_btn.clicked.connect(self.show_settings)
         
         # EXIBE A APLICAÇÂO
         self.show()
@@ -44,18 +46,28 @@ class MainWindow(QMainWindow):
     
     def show_page_1(self):
         self.reset_selection()
-        self.ui.pages.setCurrentWidget(self.ui.ui_pages.page_1)
+        self.ui.pages.setCurrentWidget(self.ui.ui_page_1.page)
         self.ui.btn_1.set_active(True)
 
     def show_page_2(self):
         self.reset_selection()
-        self.ui.pages.setCurrentWidget(self.ui.ui_pages.page_2)
+        self.ui.pages.setCurrentWidget(self.ui.ui_page_2.page)
         self.ui.btn_2.set_active(True)
 
     def show_page_3(self):
         self.reset_selection()
-        self.ui.pages.setCurrentWidget(self.ui.ui_pages.page_3)
+        self.ui.pages.setCurrentWidget(self.ui.ui_page_3.page)
         self.ui.btn_3.set_active(True)
+
+    def show_page_4(self):
+        self.reset_selection()
+        self.ui.pages.setCurrentWidget(self.ui.ui_page_4.page)
+        self.ui.btn_4.set_active(True)
+
+    def show_settings(self):
+        self.reset_selection()
+        self.ui.pages.setCurrentWidget(self.ui.ui_sttgs.page)
+        self.ui.settings_btn.set_active(True)
 
     def toggle_button(self):
         # Get left menu width
